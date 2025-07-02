@@ -1,0 +1,36 @@
+# Ambiente Virtual
+# Ignora a pasta do ambiente virtual para não enviar todas as bibliotecas para o repositório.
+venv/
+.venv/
+env/
+.env
+
+# Ficheiros de Cache e Bytecode do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ficheiros de Configuração de IDEs
+.vscode/
+.idea/
+*.swp
+
+# Ficheiros de Build e Distribuição
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Ficheiros de Teste e Cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ficheiros de Bases de Dados Locais (se aplicável)
+*.sqlite3
+*.db
+
+# Ficheiros de Sistema Operacional
+.DS_Store
+Thumbs.db

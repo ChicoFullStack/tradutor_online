@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Serviço do Frontend (Next.js)
+  frontend:
+    build:
+      context: ./frontend # Caminho para a pasta do seu frontend
+      dockerfile: Dockerfile
+    restart: always
+    # A porta não é exposta diretamente, o Nginx irá geri-la.
+
+  # Serviço do Backend (Python/FastAPI)
+  backend:
+    build:
+      context: ./backend # Caminho para a pasta do seu backend
+      dockerfile: Dockerfile
+    restart: always
+    # A porta não é exposta diretamente, o Nginx irá geri-la.
+
+  # Serviço do Nginx (Proxy Reverso)
+  nginx:
+    build:
+      context: ./nginx # Caminho para a pasta com o Dockerfile e nginx.conf
+    ports:
+      - "80:80"   # Mapeia a porta 80 do seu servidor para a porta 80 do Nginx
+      - "443:443" # Mapeia a porta 443 do seu servidor para a porta 443 do Nginx
+    restart: always
+    depends_on:
+      - frontend
+      - backend
+    # Se estiver a usar Let's Encrypt, precisa de montar os volumes dos certificados.
+    # Descomente e ajuste as linhas seguintes se os seus certificados estiverem no host.
+    # volumes:
+    #   - /etc/letsencrypt:/etc/letsencrypt:ro
