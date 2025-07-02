@@ -31,7 +31,8 @@ services:
     depends_on:
       - frontend
       - backend
-    # Se estiver a usar Let's Encrypt, precisa de montar os volumes dos certificados.
-    # Descomente e ajuste as linhas seguintes se os seus certificados estiverem no host.
-    # volumes:
-    #   - /etc/letsencrypt:/etc/letsencrypt:ro
+    # CORREÇÃO: Descomentada a secção de volumes para partilhar os certificados SSL
+    # com o contentor do Nginx. Certifique-se de que o caminho no seu servidor
+    # (host) para os certificados do Let's Encrypt está correto.
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
