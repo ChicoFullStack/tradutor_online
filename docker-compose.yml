@@ -1,3 +1,4 @@
+version: "3.9"
 
 services:
   frontend:
@@ -33,9 +34,8 @@ services:
     image: nginx:stable
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
-      - "8081:8081"
+      - "8080:8080"  # HTTP para frontend
+      - "8443:8443"  # HTTPS para backend
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/logs:/var/log/nginx
