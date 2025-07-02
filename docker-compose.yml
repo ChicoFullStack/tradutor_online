@@ -1,4 +1,4 @@
-version: '3.8'
+# A linha 'version' foi removida por ser obsoleta nas versões modernas do Docker Compose.
 
 services:
   # Serviço do Frontend (Next.js)
@@ -22,8 +22,11 @@ services:
     build:
       context: ./nginx # Caminho para a pasta com o Dockerfile e nginx.conf
     ports:
-      - "80:80"   # Mapeia a porta 80 do seu servidor para a porta 80 do Nginx
-      - "443:443" # Mapeia a porta 443 do seu servidor para a porta 443 do Nginx
+      # CORREÇÃO: Mapeia para portas diferentes para evitar conflitos.
+      # A porta 8080 do seu servidor será direcionada para a porta 80 do Nginx.
+      - "8080:80"
+      # A porta 8443 do seu servidor será direcionada para a porta 443 do Nginx.
+      - "8443:443"
     restart: always
     depends_on:
       - frontend
