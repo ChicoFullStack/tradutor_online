@@ -22,11 +22,11 @@ services:
     build:
       context: ./nginx # Caminho para a pasta com o Dockerfile e nginx.conf
     ports:
-      # CORREÇÃO: Mapeia para portas diferentes para evitar conflitos.
-      # A porta 8080 do seu servidor será direcionada para a porta 80 do Nginx.
-      - "8080:80"
-      # A porta 8443 do seu servidor será direcionada para a porta 443 do Nginx.
-      - "8443:443"
+      # CORREÇÃO: As portas foram alteradas novamente para evitar conflitos.
+      # A porta 8081 do seu servidor será direcionada para a porta 80 do Nginx.
+      - "8081:80"
+      # A porta 8444 do seu servidor será direcionada para a porta 443 do Nginx.
+      - "8444:443"
     restart: always
     depends_on:
       - frontend
